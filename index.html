@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLI4D - Prediksi Togel</title>
+    <style>
+body{
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    line-height: 1.8;
+    color: #fff;
+
+    background:
+    radial-gradient(circle at top,#2a0a5e,#0b001a);
+
+    min-height:100vh;
+
+        }
+
+        .control{
+    position: sticky;
+    top: 10px;
+    z-index: 999;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(15px);
+
+    padding: 18px;
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    border-radius: 18px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.35);
+
+    color:#fff;
+}
+
+        input,
+select{
+    padding:12px 15px;
+    border:none;
+    border-radius:12px;
+
+    background:rgba(255,255,255,.12);
+    color:#fff;
+
+    outline:none;
+
+    transition:.2s;
+}
+
+/* WARNA ITEM DROPDOWN */
+select option{
+    background:#2a0a5e;
+    color:#ffffff;
+}
+
+input:focus,
+select:focus{
+    background:rgba(255,255,255,.2);
+    transform:scale(1.03);
+}
+
+button{
+    padding:12px 18px;
+    border:none;
+    border-radius:12px;
+
+    font-weight:bold;
+    cursor:pointer;
+
+    color:#fff;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7a2cff,
+        #2f00ff
+    );
+
+    box-shadow:
+    0 10px 25px rgba(122,44,255,.4);
+
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:
+    0 15px 30px rgba(122,44,255,.6);
+}
+
+        h1, h2 {
+            color: #1a0033;
+        }
+
+        .angka {
+            font-weight: bold;
+            color: #d40000;
+        }
+        
+        #prediksiArea{
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 18px;
+    backdrop-filter: blur(15px);
+    padding: 25px;
+    color: #fff;
+    box-shadow: 0 15px 35px rgba(0,0,0,.35);
+}
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        .judul-box{
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    text-align:center;
+
+    margin:25px 0;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.35);
+}
+
+.judul-box h1{
+    color:#fff;
+    margin:0;
+    font-size:30px;
+}
+
+.copy-judul-btn{
+    margin-top:15px;
+
+    padding:12px 18px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7a2cff,
+        #2f00ff
+    );
+
+    transition:.2s;
+}
+
+.copy-judul-btn:hover{
+    transform:translateY(-2px);
+}
+.pin-overlay{
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top, #2a0a5e, #0b001a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    font-family: Arial, sans-serif;
+}
+
+/* CARD */
+.pin-card{
+    width: 340px;
+    padding: 30px 25px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    text-align: center;
+    backdrop-filter: blur(18px);
+    animation: floatIn 0.5s ease;
+}
+
+/* TITLE */
+.pin-card h2{
+    margin: 0;
+    color: #fff;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.pin-card p{
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* INPUT */
+#pinInput{
+    width: 92.6%;
+    margin-top: 18px;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    text-align: center;
+    outline: none;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    letter-spacing: 4px;
+    transition: 0.2s;
+}
+
+#pinInput:focus{
+    background: rgba(255,255,255,0.25);
+    transform: scale(1.03);
+}
+
+/* BUTTON */
+.pin-card button{
+    width: 100%;
+    margin-top: 15px;
+    padding: 13px;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(135deg, #7a2cff, #2f00ff);
+    box-shadow: 0 10px 25px rgba(122,44,255,0.4);
+    transition: 0.2s;
+}
+
+.pin-card button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(122,44,255,0.6);
+}
+
+/* ERROR */
+#pinError{
+    margin-top: 12px;
+    color: #ff4d6d;
+    font-size: 13px;
+    min-height: 18px;
+}
+
+/* ANIMATION */
+@keyframes floatIn{
+    from{
+        transform: translateY(30px) scale(0.9);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+p{
+    color:rgba(255,255,255,.9);
+}
+
+h1,h2{
+    color:#fff;
+}
+
+a{
+    color:#9f7cff;
+}
+
+strong{
+    color:#fff;
+}
+
+/* SHAKE ERROR */
+@keyframes shake{
+    0%,100%{transform: translateX(0);}
+    25%{transform: translateX(-6px);}
+    50%{transform: translateX(6px);}
+    75%{transform: translateX(-6px);}
+}
+    </style>
+</head>
+<body>
+
+    <div class="control">
+        <strong>Nama Pasaran:</strong>
+
+<select id="pasaranInput" onchange="updateContent()">
+<option value="Bullseye">BULLSEYE</option>
+<option value="Cambodia">CAMBODIA</option>
+<option value="Carolina Day">CAROLINA DAY</option>
+<option value="Carolina Eve">CAROLINA EVE</option>
+<option value="Chicago">CHICAGO</option>
+<option value="Chicago Night">CHICAGO NIGHT</option>
+<option value="China">CHINA</option>
+<option value="HK Siang">HK SIANG</option>
+<option value="Hongkong">HONGKONG</option>
+<option value="Japan">JAPAN</option>
+<option value="Kamboja">KAMBOJA</option>
+<option value="Libanon">LIBANON</option>
+<option value="Malaysia">MALAYSIA</option>
+<option value="PCSO">PCSO</option>
+<option value="Singapore">SINGAPORE</option>
+<option value="Sydney">SYDNEY</option>
+<option value="Taiwan">TAIWAN</option>
+<option value="Tasmania 10">TASMANIA 10</option>
+<option value="Tasmania 13">TASMANIA 13</option>
+<option value="Tasmania 16">TASMANIA 16</option>
+<option value="Toto Macau">TOTO MACAU</option>
+<option value="Toto Wuhan">TOTO WUHAN</option>
+<option value="Virginia Day">VIRGINIA DAY</option>
+<option value="Virginia Night">VIRGINIA NIGHT</option>
+<option value="Yordania">YORDANIA</option>
+</select>
+
+        <strong>Tanggal:</strong>
+
+        <input type="date" id="tanggalInput" onchange="updateContent()">
+        <button onclick="generatePrediksi()">Generate</button>
+        <button onclick="copyContent()">Copy</button>
+    </div>
+
+    <div class="judul-box">
+
+    <h1 id="judulUtama">
+        OLI4D ⋆ Prediksi Jitu Togel TAIWAN 07 Juni 2026
+    </h1>
+
+    <button class="copy-judul-btn" onclick="copyJudul()">
+        Copy Judul
+    </button>
+
+</div>
+
+    <p>
+        <strong id="judulBold">OLI4D ⋆ Prediksi Jitu Togel Carolina Day</strong>
+        - Bandar togel online terpercaya di Indonesia menyediakan bocoran keluaran
+        <span id="pasaran1">Carolina Day</span>
+        hari ini tercepat dan akurat. Simak selengkapnya dibawah ini.
+    </p>
+
+<img
+    id="gambarPasaran"
+    alt="Prediksi OLI4D"
+    style="display:block; margin:20px auto;">
+
+    <p>
+        Bocoran data keluaran
+        <span id="pasaran2">Carolina Day</span>
+        hari ini yang kami berikan akan sangat bermanfaat dan dapat dibuktikan dengan cepat melalui situs oli4d.
+        Sebab itu bagi anda yang sering merumus tetapi masih tetap 0, anda tak perlu bersusah payah,
+        silahkan bergabung dan memasang taruhan menggunakan prediksi angka keluar
+        <span id="pasaran3">Carolina Day</span>
+        yang kami bocorkan, lakukan pendaftaran terlebih dahulu.
+    </p>
+
+    <h2 id="subJudul">OLI4D ⋆ Prediksi Togel Carolina Day</h2>
+
+    <p>
+        Kami pakar perkiraan Togel Atau pakar prediksi togel ingin memberikan bocoran togel
+        <span id="pasaran4">Carolina Day</span>
+        yang sangat terpercaya bisa tembus dan mendapatkan jackpot 2D, 3D bahkan 4D.
+        Silahkan simak dan mulai pasang taruhan anda di situs bandar togel terpercaya oli4d.
+    </p>
+
+<p class="angka" id="prediksiArea">
+    ANGKA UTAMA BBFS : 4*5*7*8*6*5<br>
+    UTAMA 4D : 7854 * 4657<br>
+    3D : 465*578<br>
+    2D : 76*58<br>
+    TOP 2D (BB) : 47*58*85*12*25*54<br>
+    ANGKA KEMBAR : 77 | 44<br>
+    CB | CM | CN : 0 | 7 | 4<br>
+    SHIO 2D : TIKUS | AYAM
+</p>
+
+    <h2>Daftar Member OLI4D</h2>
+
+    <a href="http://rebrand.ly/situsolislot" target="_blank">
+        <img src="https://oli4dprediksitoday.com/wp-content/uploads/2024/09/DAFTAR-SEKARANG-OLI4D.gif"
+             alt="DAFTAR SEKARANG OLI4D">
+    </a>
+
+    <p>
+        Klik Tombol di atas ini, lalu ikuti langkah-langkah yang diberikan sampai akun Anda selesai.
+        Jangan khawatir, proses aman, cepat dan terpercaya. OLI4D Juga menyediakan beragam promosi
+        seperti Bonus New Member.
+    </p>
+
+    <img src="https://oli4dprediksitoday.com/wp-content/uploads/2024/09/PROMO-NEW-MEMBER-OLI4D.png"
+         alt="Promo New Member">
+
+    <p>
+        Selain Bonus new member, tersedia gratis 20k bagi anda yang menggunakan aplikasi yang telah tersedia.
+        Segera unduh dan nikmati keseruan bermain gratis 20k bersama oli4d.
+    </p>
+
+    <img src="https://oli4dprediksitoday.com/wp-content/uploads/2024/09/PROMO-DOWNLOAD-APLIKASI-OLI4D.png"
+         alt="Promo Aplikasi">
+
+    <p>
+        Ada juga bonus lainnya yang bisa anda dapatkan seperti Bonus Hiburan Togel Hadiah 2 Dan Hadiah 3.
+        Semua event akan terus berjalan bahkan dalam waktu yang lama. Jadi selalu ikuti event yang tersedia
+        yang terbukti sudah memberikan banyak kemenangan bagi member setia oli4d.
+    </p>
+
+    <img src="https://oli4dprediksitoday.com/wp-content/uploads/2024/09/PROMO-DEPOSIT-HARIAN-OLI4D.png"
+         alt="Promo Deposit">
+
+    <p>
+        Bagi kalian yang merasa informasi yang kami berikan belum cukup, serta ingin menanyakan bonus menarik lainnya,
+        langsung saja hubungi livechat layanan 24jam yang akan mempermudah anda mendapatkan informasi.
+    </p>
+    <div id="pinOverlay" class="pin-overlay">
+    <div class="pin-card">
+        <div class="pin-header">
+            <h2>🔐 Akses PREDIKSI OLI4D</h2>
+            <p>Masukkan PIN untuk melanjutkan</p>
+        </div>
+
+        <input type="password" id="pinInput" placeholder="••••">
+
+        <button onclick="checkPin()">MASUK</button>
+
+        <p id="pinError"></p>
+    </div>
+</div>
+
+    <script>
+        function formatTanggal(dateString) {
+            if (!dateString) return '';
+
+            const date = new Date(dateString);
+
+            return date.toLocaleDateString('id-ID', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+    }).toUpperCase();
+        }
+        
+        const gambarPasaran = {
+"Bullseye": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/BULLSEYE-PREDIKSI-OLI4D.png",
+"Cambodia": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/CAMBODIA-PREDIKSI-OLI4D.webp",
+"Carolina Day": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/CAROLINA-DAY-PREDIKSI-OLI4D.webp",
+"Carolina Eve": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/CAROLINA-EVE-PREDIKSI-OLI4D.webp",
+"Chicago": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/CHICAGO-PREDIKSI-OLI4D.webp",
+"Chicago Night": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/CHICAGO-NIGHT-PREDIKSI-OLI4D.webp",
+"China": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/CHINA-PREDIKSI-OLI4D.webp",
+"HK Siang": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/HONGKONG-DAY-PREDIKSI-OLI4D.webp",
+"Hongkong": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/HONGKONG-PREDIKSI-OLI4D.webp",
+"Japan": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/JAPAN-PREDIKSI-OLI4D.webp",
+"Kamboja": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/KAMBOJA-PREDIKSI-OLI4D.webp",
+"Libanon": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/LIBANON-PREDIKSI-OLI4D.webp",
+"Malaysia": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/MALAYSIA-PREDIKSI-OLI4D.webp",
+"PCSO": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/PCSO-PREDIKSI-OLI4D.webp",
+"Singapore": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/SINGAPORE-PREDIKSI-OLI4D.webp",
+"Sydney": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/SYDNEY-PREDIKSI-OLI4D-1024x585.png",
+"Taiwan": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/TAIWAN-PREDIKSI-OLI4D.webp",
+"Tasmania 10": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/TASMANIA-10-PREDIKSI-OLI4D.webp",
+"Tasmania 13": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/TASMANIA-13-PREDIKSI-OLI4D.webp",
+"Tasmania 16": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/TASMANIA-16-PREDIKSI-OLI4D.webp",
+"Toto Macau": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/TOTOMACAU-00-PREDIKSI-OLI4D.webp",
+"Toto Wuhan": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/photo_2024-09-30_22-23-14.webp",
+"Virginia Day": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/VIRGINIA-DAY-PREDIKSI-OLI4D.webp",
+"Virginia Night": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/VIRGINIA-NIGHT-PREDIKSI-OLI4D.webp",
+"Yordania": "https://oli4dprediksitoday.com/wp-content/uploads/2024/09/YORDANIA-PREDIKSI-OLI4D.webp"
+};
+
+        function updateContent() {
+            const pasaran = document.getElementById('pasaranInput').value;
+            document.getElementById('gambarPasaran').src =
+    gambarPasaran[pasaran];
+            const tanggal = formatTanggal(
+                document.getElementById('tanggalInput').value
+            );
+
+            const judul =
+                tanggal
+                ? `OLI4D ⋆ Prediksi Jitu Togel ${pasaran} ${tanggal}`
+                : `OLI4D ⋆ Prediksi Jitu Togel ${pasaran}`;
+
+            const subJudul =
+                tanggal
+                ? `OLI4D ⋆ Prediksi Togel ${pasaran} ${tanggal}`
+                : `OLI4D ⋆ Prediksi Togel ${pasaran}`;
+
+            document.getElementById('judulUtama').textContent = judul;
+            document.getElementById('judulBold').textContent = judul;
+            document.getElementById('subJudul').textContent = subJudul;
+
+            document.querySelectorAll(
+                '#pasaran1, #pasaran2, #pasaran3, #pasaran4'
+            ).forEach(el => {
+                el.textContent = pasaran;
+            });
+        }
+
+function copyContent() {
+
+    const pasaran = document.getElementById('pasaranInput').value;
+
+    const tanggal = formatTanggal(
+        document.getElementById('tanggalInput').value
+    );
+
+    const gambar = document.getElementById('gambarPasaran').src;
+
+    const prediksi = document.getElementById('prediksiArea').innerHTML;
+
+    const wpContent = `
+<!-- wp:paragraph -->
+<p><strong>OLI4D ⋆ Prediksi Jitu Togel ${pasaran} ${tanggal}</strong> - Bandar togel online terpercaya di Indonesia menyediakan bocoran keluaran ${pasaran} hari ini tercepat dan akurat. Simak selengkapnya dibawah ini.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":64,"align":"center"} -->
+<figure class="wp-block-image aligncenter">
+<img src="${gambar}" alt="OLI4D ⋆ Prediksi Jitu Togel ${pasaran} ${tanggal}" />
+</figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Bocoran data keluaran ${pasaran} hari ini yang kami berikan akan sangat bermanfaat dan dapat dibuktikan dengan cepat melalui situs oli4d. Sebab itu bagi anda yang sering merumus tetapi masih tetap 0, anda tak perlu bersusah payah, silahkan bergabung dan memasang taruhan menggunakan prediksi angka keluar ${pasaran} yang kami bocorkan, lakukan pendaftaran terlebih dahulu.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">OLI4D ⋆ Prediksi Togel ${pasaran} ${tanggal}</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Kami pakar perkiraan Togel Atau pakar <a href="https://oli4dprediksitoday.com/" target="_blank" rel="noreferrer noopener">prediksi togel</a> ingin memberikan bocoran togel ${pasaran} yang sangat terpercaya bisa tembus dan mendapatkan jackpot 2D, 3D bahkan 4D. Silahkan simak dan mulai pasang taruhan anda di situs bandar togel terpercaya oli4d.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table -->
+<figure class="wp-block-table">
+<table class="has-fixed-layout">
+<tbody>
+<tr>
+<td class="has-text-align-center" data-align="center">
+<strong>${prediksi.replace(/<br>/g,'</strong><br><strong>')}</strong>
+</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<!-- /wp:table -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Daftar Member OLI4D</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"id":34,"linkDestination":"custom","align":"center"} -->
+<figure class="wp-block-image aligncenter">
+<a href="http://rebrand.ly/situsolislot">
+<img src="https://oli4dprediksitoday.com/wp-content/uploads/2024/09/DAFTAR-SEKARANG-OLI4D.gif" alt="DAFTAR SEKARANG OLI4D" class="wp-image-34" />
+</a>
+</figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Klik Tombol di atas ini, lalu ikuti langkah-langkah yang diberikan sampai akun Anda selesai. Jangan khawatir, proses aman, cepat dan terpercaya. <a href="https://oli4dprediksitoday.com/" target="_blank" rel="noreferrer noopener">OLI4D</a> Juga menyediakan beragam promosi seperti Bonus New Member.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":35,"align":"center"} -->
+<figure class="wp-block-image aligncenter">
+<img src="https://oli4dprediksitoday.com/wp-content/uploads/2024/09/PROMO-NEW-MEMBER-OLI4D.png" alt="PROMO-ANGGOTA-BARU-OLI4D" class="wp-image-35" />
+</figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Selain Bonus new member, tersedia gratis 20k bagi anda yang menggunakan aplikasi yang telah tersedia. Segera unduh dan nikmati keseruan bermain gratis 20k bersama oli4d.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":36,"align":"center"} -->
+<figure class="wp-block-image aligncenter">
+<img src="https://oli4dprediksitoday.com/wp-content/uploads/2024/09/PROMO-DOWNLOAD-APLIKASI-OLI4D.png" alt="PROMO-UNDUH-APLIKASI-OLI4D" class="wp-image-36" />
+</figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Ada juga bonus lainnya yang bisa anda dapatkan seperti Bonus Hiburan Togel Hadiah 2 Dan Hadiah 3. Semua event akan terus berjalan bahkan dalam waktu yang lama. Jadi selalu ikuti event yang tersedia yang terbukti sudah memberikan banyak kemenangan bagi member setia oli4d.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":37,"align":"center"} -->
+<figure class="wp-block-image aligncenter">
+<img src="https://oli4dprediksitoday.com/wp-content/uploads/2024/09/PROMO-DEPOSIT-HARIAN-OLI4D.png" alt="PROMO DEPOSIT HARIAN OLI4D" class="wp-image-37" />
+</figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Bagi kalian yang merasa informasi yang kami berikan belum cukup, serta ingin menanyakan bonus menarik lainnya, langsung saja hubungi livechat layanan 24jam yang akan mempermudah anda mendapatkan informasi.</p>
+<!-- /wp:paragraph -->
+`;
+
+    navigator.clipboard.writeText(wpContent)
+        .then(() => {
+            alert("Format WordPress berhasil dicopy!");
+        })
+        .catch(() => {
+            alert("Gagal menyalin.");
+        });
+}
+
+        window.onload = function () {
+            const today = new Date();
+            document.getElementById('tanggalInput').value =
+                today.toISOString().split('T')[0];
+
+            updateContent();
+        };
+
+function randomDigit() {
+    return Math.floor(Math.random() * 10);
+}
+
+function random2D() {
+    return `${randomDigit()}${randomDigit()}`;
+}
+
+function random3D() {
+    return `${randomDigit()}${randomDigit()}${randomDigit()}`;
+}
+
+function random4D() {
+    return `${randomDigit()}${randomDigit()}${randomDigit()}${randomDigit()}`;
+}
+
+function randomDigit() {
+        return Math.floor(Math.random() * 10);
+    }
+
+function generatePrediksi() {
+    const shio = ["TIKUS","KERBAU","MACAN","KELINCI","NAGA","ULAR","KUDA","KAMBING","MONYET","AYAM","ANJING","BABI"];
+
+    // pool angka 0-9
+    let pool = [0,1,2,3,4,5,6,7,8,9];
+
+    // ambil angka unik untuk BBFS
+    function pickUnique(arr, count) {
+        let temp = [...arr];
+        let result = [];
+
+        for (let i = 0; i < count; i++) {
+            const idx = Math.floor(Math.random() * temp.length);
+            result.push(temp.splice(idx, 1)[0]);
+        }
+
+        return result;
+    }
+
+    // BBFS (6 angka unik)
+    let bbfs = pickUnique(pool, 6);
+    const bbfsStr = bbfs.join('*');
+
+    // sisa angka
+    let remaining = pool.filter(n => !bbfs.includes(n));
+
+    // fungsi random dari sumber
+    function pickFrom(source, len) {
+        let res = '';
+        for (let i = 0; i < len; i++) {
+            res += source[Math.floor(Math.random() * source.length)];
+        }
+        return res;
+    }
+
+    // 4D
+    let d4a = pickFrom(bbfs, 4);
+    let d4b = pickFrom(bbfs.concat(remaining), 4);
+
+    // 3D
+    let d3a = pickFrom(bbfs, 3);
+    let d3b = pickFrom(bbfs.concat(remaining), 3);
+
+    // 2D
+    let d2a = pickFrom(bbfs, 2);
+    let d2b = pickFrom(bbfs.concat(remaining), 2);
+
+    // TOP 2D
+    let top2d = [
+        d2a,
+        d2b,
+        d3a.slice(0,2),
+        d3b.slice(0,2),
+        pickFrom(bbfs,2),
+        pickFrom(bbfs,2)
+    ].join('*');
+
+    // ANGKA KEMBAR (ANTI 00 & ANTI 0)
+    let kembarPool = bbfs.filter(n => n !== 0);
+    if (kembarPool.length < 2) {
+        kembarPool = [1,2,3,4,5,6,7,8,9];
+    }
+
+    let kembar1 = kembarPool[Math.floor(Math.random() * kembarPool.length)];
+    let kembar2 = kembarPool[Math.floor(Math.random() * kembarPool.length)];
+
+    while (kembar2 === kembar1) {
+        kembar2 = kembarPool[Math.floor(Math.random() * kembarPool.length)];
+    }
+
+    // CB CM CN (ANTI 0)
+    let nonZero = bbfs.filter(n => n !== 0);
+    if (nonZero.length < 3) nonZero = [1,2,3,4,5,6,7,8,9];
+
+    let cb = nonZero.splice(Math.floor(Math.random()*nonZero.length),1)[0];
+    let cm = nonZero.splice(Math.floor(Math.random()*nonZero.length),1)[0];
+    let cn = nonZero.splice(Math.floor(Math.random()*nonZero.length),1)[0];
+    
+    // CB CM CN (ANTI 0)
+    let shio1 = Math.floor(Math.random() * shio.length);
+
+    let shio2;
+do {
+    shio2 = Math.floor(Math.random() * shio.length);
+} while (shio2 === shio1);
+
+    const html = `
+        ANGKA UTAMA BBFS : ${bbfsStr}<br>
+        UTAMA 4D : ${d4a} * ${d4b}<br>
+        3D : ${d3a} * ${d3b}<br>
+        2D : ${d2a} * ${d2b}<br>
+        TOP 2D (BB) : ${top2d}<br>
+        ANGKA KEMBAR : ${kembar1}${kembar1} * ${kembar2}${kembar2}<br>
+        CB | CM | CN : ${cb} | ${cm} | ${cn}<br>
+        SHIO 2D : ${shio[shio1]} | ${shio[shio2]}
+    `;
+
+    document.getElementById("prediksiArea").innerHTML = html;
+}
+    
+    function copyJudul() {
+
+    const judul =
+        document.getElementById("judulUtama").textContent.trim();
+
+    navigator.clipboard.writeText(judul)
+        .then(() => {
+            alert("Judul berhasil dicopy!");
+        })
+        .catch(() => {
+            alert("Gagal menyalin judul.");
+        });
+}
+const PIN_BENAR = "898989";
+
+function checkPin() {
+    const input = document.getElementById("pinInput").value;
+
+    if (input === PIN_BENAR) {
+        document.getElementById("pinOverlay").style.display = "none";
+    } else {
+        const err = document.getElementById("pinError");
+        err.innerText = "PIN salah, coba lagi!";
+        err.style.animation = "shake 0.3s";
+        setTimeout(() => err.style.animation = "", 300);
+    }
+}
+    </script>
+
+</body>
+</html>
