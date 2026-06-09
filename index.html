@@ -615,7 +615,7 @@ function copyContent() {
 
     navigator.clipboard.writeText(wpContent)
         .then(() => {
-            alert("Berhasil dicopy!");
+            alert("Format WordPress berhasil dicopy!");
         })
         .catch(() => {
             alert("Gagal menyalin.");
@@ -689,13 +689,13 @@ function generatePrediksi() {
     let d4a = pickFrom(bbfs, 4);
     let d4b = pickFrom(bbfs.concat(remaining), 4);
 
-    // 3D
-    let d3a = pickFrom(bbfs, 3);
-    let d3b = pickFrom(bbfs.concat(remaining), 3);
+// 3D dari 4D (digit terakhir)
+let d3a = d4a.slice(-3);
+let d3b = d4b.slice(-3);
 
-    // 2D
-    let d2a = pickFrom(bbfs, 2);
-    let d2b = pickFrom(bbfs.concat(remaining), 2);
+// 2D dari 4D (digit terakhir)
+let d2a = d4a.slice(-2);
+let d2b = d4b.slice(-2);
 
     // TOP 2D
     let top2d = [
@@ -729,12 +729,34 @@ function generatePrediksi() {
     let cn = nonZero.splice(Math.floor(Math.random()*nonZero.length),1)[0];
     
     // CB CM CN (ANTI 0)
-    let shio1 = Math.floor(Math.random() * shio.length);
+function getShio(angka2D){
 
-    let shio2;
-do {
-    shio2 = Math.floor(Math.random() * shio.length);
-} while (shio2 === shio1);
+    const shioMap = {
+        "KUDA":["01","13","25","37","49","61","73","85","97"],
+        "ULAR":["02","14","26","38","50","62","74","86","98"],
+        "NAGA":["03","15","27","39","51","63","75","87","99"],
+        "KELINCI":["04","16","28","40","52","64","76","88","00"],
+        "MACAN":["05","17","29","41","53","65","77","89"],
+        "KERBAU":["06","18","30","42","54","66","78","90"],
+        "TIKUS":["07","19","31","43","55","67","79","91"],
+        "BABI":["08","20","32","44","56","68","80","92"],
+        "ANJING":["09","21","33","45","57","69","81","93"],
+        "AYAM":["10","22","34","46","58","70","82","94"],
+        "MONYET":["11","23","35","47","59","71","83","95"],
+        "KAMBING":["12","24","36","48","60","72","84","96"]
+    };
+
+    for(const nama in shioMap){
+        if(shioMap[nama].includes(angka2D)){
+            return nama;
+        }
+    }
+
+    return "-";
+}
+
+let shio1 = getShio(d2a);
+let shio2 = getShio(d2b);
 
     const html = `
         ANGKA UTAMA BBFS : ${bbfsStr}<br>
@@ -744,7 +766,7 @@ do {
         TOP 2D (BB) : ${top2d}<br>
         ANGKA KEMBAR : ${kembar1}${kembar1} * ${kembar2}${kembar2}<br>
         CB | CM | CN : ${cb} | ${cm} | ${cn}<br>
-        SHIO 2D : ${shio[shio1]} | ${shio[shio2]}
+        SHIO 2D : ${shio1} | ${shio2}
     `;
 
     document.getElementById("prediksiArea").innerHTML = html;
@@ -777,7 +799,7 @@ function checkPin() {
         setTimeout(() => err.style.animation = "", 300);
     }
 }
-    </script>
+</script>
 <script>
 document.addEventListener("contextmenu", function(e) {
     e.preventDefault();
@@ -816,5 +838,6 @@ document.addEventListener("keydown", function(e) {
     }
 });
 </script>
+
 </body>
 </html>
